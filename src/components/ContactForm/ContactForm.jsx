@@ -3,8 +3,7 @@ import { useId } from "react";
 import * as Yup from "yup";
 import s from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsSlice";
-import { nanoid } from "nanoid";
+import { addContact } from "../../redux/contactsOps";
 
 const ContactForm = () => {
   const nameId = useId();
@@ -27,7 +26,7 @@ const ContactForm = () => {
   });
 
   const handleSubmit = (values, actions) => {
-    const newContact = { ...values, name: values.username, id: nanoid() };
+    const newContact = { ...values, name: values.username };
     dispatch(addContact(newContact));
     actions.resetForm();
   };
